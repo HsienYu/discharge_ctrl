@@ -12,7 +12,7 @@ var sref = null;
 var stopRunningPlayer = function () {
     if (sref && sref.pid > 0) {
         kill(sref.pid, 'SIGTERM', function () {
-            myLog('Killed OMX player with PID: ', sref.pid);
+            console.Log('Killed OMX player with PID: ', sref.pid);
             sref = null;
         });
     }
