@@ -74,6 +74,9 @@ var test = function () {
         exec(call);
     })
 }
+
+test();
+
 client.on('message', function (topic, message) {
     var action = topic.toString().split('/').pop();
     myLog('MQTT subscriber action: ', action);
