@@ -41,4 +41,4 @@ var detection = function () {
         while (true) {
             detection();
         }
-    })();
+    });
