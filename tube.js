@@ -1,4 +1,3 @@
-const { getInfo } = require('ytdl-getinfo')
 const youtube = require('youtube-random-video');
 const exec = require('child_process').exec;
 
@@ -11,15 +10,9 @@ var test = function () {
         var vid = obj.videoId;
         var youtubeUrl = "https://www.youtube.com/watch?v=" + vid;
         console.log(youtubeUrl);
-        getInfo(youtubeUrl).then(info => {
-            console.log(info.items[0].url)
-            var call = `omxplayer ${info.items[0].url}`;
-            console.log(call);
-            exec(call);
-        })
-        //var call = "omxplayer" + " " + "`" + `youtube-dl -g ${youtubeUrl}` + "`";
-        //console.log(call);
-        //exec(call);
+        var call = "omxplayer" + " " + "`" + `youtube-dl -g ${youtubeUrl}` + "`";
+        console.log(call);
+        exec(call);
     })
 }
 
