@@ -11,9 +11,9 @@ var test = function () {
         var vid = obj.videoId;
         var youtubeUrl = "https://www.youtube.com/watch?v=" + vid;
         console.log(youtubeUrl);
-        var call = "omxplayer" + "`" + `youtube-dl -g ${youtubeUrl}` + "`";
+        var call = "omxplayer" + " " + "`" + `youtube-dl -g ${youtubeUrl}` + "`";
         console.log(call);
-        //exec(call);
+        exec(call);
     })
 }
 
