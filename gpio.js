@@ -44,4 +44,5 @@ while (true) {
         break;
     }
     detection();
+    GPIO.write(23, PIN.MODE.HIGH);
 }
