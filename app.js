@@ -71,6 +71,7 @@ var test = function () {
         var youtubeUrl = "https://www.youtube.com/watch?v=" + vid;
         console.log(youtubeUrl);
         var call = "omxplayer" + "`" + `youtube-dl -g ${youtubeUrl}` + "`";
+        console.log(call);
         exec(call);
     })
 }
