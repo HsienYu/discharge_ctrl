@@ -12,7 +12,7 @@ var sref = null;
 var stopRunningPlayer = function () {
     if (sref && sref.pid > 0) {
         kill(sref.pid, 'SIGTERM', function () {
-            console.Log('Killed OMX player with PID: ', sref.pid);
+            //console.Log('Killed OMX player with PID: ', sref.pid);
             sref = null;
         });
     }
@@ -28,7 +28,7 @@ if (GPIO.read(24)) {
         sref = exec(call);
 
         sref.on('close', (code) => {
-            console.log('Finished');
+            //console.log('Finished');
             stopRunningPlayer();
             GPIO.write(23, PIN.MODE.HIGH);
         });
