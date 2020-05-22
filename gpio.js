@@ -37,8 +37,8 @@ var detection = function () {
 }
 
 
-    (async () => {
-        while (true) {
-            detection();
-        }
-    });
+var goto = async function () {
+    while (true) {
+        detection();
+    }
+}
