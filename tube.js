@@ -1,6 +1,5 @@
 const { getInfo } = require('ytdl-getinfo')
 const youtube = require('youtube-random-video');
-const { getInfo } = require('ytdl-getinfo')
 const exec = require('child_process').exec;
 
 
