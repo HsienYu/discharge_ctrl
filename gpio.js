@@ -21,7 +21,7 @@ var stopRunningPlayer = function () {
 
 
 var detection = function () {
-    if (GPIO.read(24)) {
+    if (GPIO.read(5)) {
         //GPIO.write(27, PIN.MODE.HIGH);
         stopRunningPlayer();
         if (sref == null) {
@@ -45,4 +45,5 @@ while (true) {
     }
     detection();
     GPIO.write(23, PIN.MODE.HIGH);
+    console.log("in" + GPIO.read(5));
 }
