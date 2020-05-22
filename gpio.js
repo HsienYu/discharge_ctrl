@@ -29,7 +29,7 @@ var detection = function () {
             sref = exec(call);
 
             sref.on('close', (code) => {
-                //console.log('Finished');
+                console.log('Finished');
                 stopRunningPlayer();
                 GPIO.write(23, PIN.MODE.HIGH);
             });
@@ -38,11 +38,10 @@ var detection = function () {
 }
 
 
-    (async () => {
-        while (true) {
-            if (isCancelRequired) {
-                break;
-            }
-            detection();
-        }
-    })();
+
+while (true) {
+    if (isCancelRequired) {
+        break;
+    }
+    detection();
+}
