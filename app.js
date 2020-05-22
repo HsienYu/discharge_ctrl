@@ -67,11 +67,11 @@ client.on('message', function (topic, message) {
     var payload = message.toString();
     myLog('MQTT subscriber payload: ', payload);
 
-    switch (action) {
+    switch (payload) {
         case 'play-video':
             stopAllPlayer();
             if (sref == null) {
-                var call = 'omxplayer' + ' ' + '/home/pi/synctest.mp4'  //' --orientation 270 --aspect-mode stretch';
+                var call = 'omxplayer /home/pi/synctest.mp4'  //' --orientation 270 --aspect-mode stretch';
                 myLog('command: ', call);
                 sref = exec(call);
                 sref.on('close', (code) => {
