@@ -3,9 +3,9 @@ const exec = require('child_process').exec;
 const kill = require('tree-kill');
 
 const GPIO = new PIN.GPIO();
-GPIO.setPin(23, PIN.MODE.OUTPUT);
-GPIO.setPin(24, PIN.MODE.INPUT);
-GPIO.pullControl(24, PIN.MODE.PULL_UP);
+GPIO.setPin(4, PIN.MODE.OUTPUT);
+GPIO.setPin(5, PIN.MODE.INPUT);
+GPIO.pullControl(5, PIN.MODE.PULL_UP);
 
 var sref = null;
 let isCancelRequired = false;
@@ -31,7 +31,7 @@ var detection = function () {
             sref.on('close', (code) => {
                 console.log('Finished');
                 stopRunningPlayer();
-                GPIO.write(23, PIN.MODE.HIGH);
+                GPIO.write(4, PIN.MODE.HIGH);
             });
         }
     }
