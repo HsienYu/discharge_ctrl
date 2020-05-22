@@ -8,6 +8,7 @@ GPIO.setPin(24, PIN.MODE.INPUT);
 GPIO.pullControl(24, PIN.MODE.PULL_UP);
 
 var sref = null;
+let isCancelRequired = false;
 
 var stopRunningPlayer = function () {
     if (sref && sref.pid > 0) {
@@ -37,8 +38,11 @@ var detection = function () {
 }
 
 
-var goto = async function () {
-    while (true) {
-        detection();
-    }
-}
+    (async () => {
+        while (true) {
+            if (isCancelRequired) {
+                break;
+            }
+            detection();
+        }
+    })();
