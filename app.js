@@ -72,6 +72,7 @@ client.on('message', function (topic, message) {
             stopAllPlayer();
             if (sref == null) {
                 var call = 'omxplayer' + ' ' + '/home/pi/synctest.mp4'  //' --orientation 270 --aspect-mode stretch';
+                myLog('command: ', call);
                 sref = exec(call);
                 sref.on('close', (code) => {
                     console.log('Finished');
