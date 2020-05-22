@@ -19,18 +19,26 @@ var stopRunningPlayer = function () {
 }
 
 
+var detection = function () {
+    if (GPIO.read(24)) {
+        //GPIO.write(27, PIN.MODE.HIGH);
+        stopRunningPlayer();
+        if (sref == null) {
+            var call = 'omxplayer' + '/home/pi/synctest.mp4' //' --orientation 270 --aspect-mode stretch';
+            sref = exec(call);
 
-if (GPIO.read(24)) {
-    //GPIO.write(27, PIN.MODE.HIGH);
-    stopRunningPlayer();
-    if (sref == null) {
-        var call = 'omxplayer' + '/home/pi/synctest.mp4' //' --orientation 270 --aspect-mode stretch';
-        sref = exec(call);
-
-        sref.on('close', (code) => {
-            //console.log('Finished');
-            stopRunningPlayer();
-            GPIO.write(23, PIN.MODE.HIGH);
-        });
+            sref.on('close', (code) => {
+                //console.log('Finished');
+                stopRunningPlayer();
+                GPIO.write(23, PIN.MODE.HIGH);
+            });
+        }
     }
 }
+
+
+    (async () => {
+        while (true) {
+            detection();
+        }
+    })();
