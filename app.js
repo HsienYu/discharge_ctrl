@@ -68,7 +68,7 @@ client.on('message', function (topic, message) {
     myLog('MQTT subscriber payload: ', payload);
 
     switch (payload) {
-        case '1.0':
+        case '1.00':
             stopAllPlayer();
             if (sref == null) {
                 var call = 'omxplayer /home/pi/synctest.mp4'  //' --orientation 270 --aspect-mode stretch';
