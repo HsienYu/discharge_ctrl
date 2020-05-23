@@ -45,8 +45,8 @@ var stopRunningPlayer = function () {
         kill(sref.pid, 'SIGTERM', function () {
             myLog('Killed OMX player with PID: ', sref.pid);
             sref = null;
-            client.publish(`${config.namespace}/mqtt-media-player/#`, 'stop_videos');
-            client.publish('Control/Out/#', 'Finish');
+            //client.publish(`${config.namespace}/mqtt-media-player/#`, 'stop_videos');
+            client.publish('esp32/output', 'open');
         });
     }
 }
