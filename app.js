@@ -2,6 +2,12 @@ const mqtt = require('mqtt');
 const exec = require('child_process').exec;
 const kill = require('tree-kill');
 const config = require('./config.json');
+const randomFile = require('select-random-file');
+const dir = './videos';
+
+randomFile(dir, (err, file) => {
+    console.log(`The random file is: ${file}.`)
+})
 
 var myLog = function (lbl, vars) {
     if (verbose) console.log(lbl, vars);
@@ -61,6 +67,7 @@ var stopAllPlayer = function () {
 }
 
 
+
 client.on('message', function (topic, message) {
     var action = topic.toString().split('/').pop();
     myLog('MQTT subscriber action: ', action);
@@ -71,13 +78,16 @@ client.on('message', function (topic, message) {
         case '1.00':
             stopAllPlayer();
             if (sref == null) {
-                var call = 'omxplayer /home/pi/synctest.mp4'  //' --orientation 270 --aspect-mode stretch';
-                myLog('command: ', call);
-                sref = exec(call);
-                sref.on('close', (code) => {
-                    console.log('Finished');
-                    stopRunningPlayer();
-                });
+                randomFile(dir, (err, file) => {
+                    console.log(`The random file is: ${file}.`)
+                    var call = `omxplayer ${file}`  //' --orientation 270 --aspect-mode stretch';
+                    myLog('command: ', call);
+                    sref = exec(call);
+                    sref.on('close', (code) => {
+                        console.log('Finished');
+                        stopRunningPlayer();
+                    });
+                })
             }
             break;
         case 'play-audio':

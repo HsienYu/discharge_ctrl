@@ -4,5 +4,6 @@
     "username": "myUser",
     "password": "myPass",
     "namespace": "discharge",
-    "playerId": "a"
+    "playerId": "a",
+    "clean": "false"
 }
