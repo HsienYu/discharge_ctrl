@@ -5,10 +5,6 @@ const config = require('./config.json');
 const randomFile = require('select-random-file');
 const dir = './videos';
 
-randomFile(dir, (err, file) => {
-    console.log(`The random file is: ${file}.`)
-})
-
 var myLog = function (lbl, vars) {
     if (verbose) console.log(lbl, vars);
 }
@@ -80,7 +76,7 @@ client.on('message', function (topic, message) {
             if (sref == null) {
                 randomFile(dir, (err, file) => {
                     console.log(`The random file is: ${file}.`)
-                    var call = `omxplayer ${file}`  //' --orientation 270 --aspect-mode stretch';
+                    var call = `omxplayer videos/${file}`  //' --orientation 270 --aspect-mode stretch';
                     myLog('command: ', call);
                     sref = exec(call);
                     sref.on('close', (code) => {
